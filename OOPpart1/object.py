@@ -45,41 +45,42 @@ class Dog:
     def __repr__(self):
         return f'Name: {self.specieslist},species: {self.species}'
         
-# 2) Now lets instantiate a few of them. A question is, are they the same?
-tracker = Dog("some kind of hound","tracker")
-bindy = Dog("dingo","bindy")
-bindy2 = Dog("dingo","bindy2")
-bindy.dognames.append("Bob")
-# 3) Global Class variables???
-bindy2.medicine = []
+if __name__ == "__main__":
+    # 2) Now lets instantiate a few of them. A question is, are they the same?
+    tracker = Dog("some kind of hound","tracker")
+    bindy = Dog("dingo","bindy")
+    bindy2 = Dog("dingo","bindy2")
+    bindy.dognames.append("Bob")
+    # 3) Global Class variables???
+    bindy2.medicine = []
 
 
-# 4) Using self
-# 5) Creating a method for this class
-print(bindy.birthdaycupcakes)
-bindy.eatcupcake(5)
-# 6) Using __repr__
-print(bindy)
-# 7) Using Properties, property(), to set setters and getter functions (https://www.programiz.com/python-programming/property)
-bindy.name = "Cool Bindy"
-bindy.dognames = []
-# 8) Decorators and CLS (@classmethod)
-def callotherfunction(newfunction):
-    print("Calling new function")
-    newfunction()
+    # 4) Using self
+    # 5) Creating a method for this class
+    print(bindy.birthdaycupcakes)
+    bindy.eatcupcake(5)
+    # 6) Using __repr__
+    print(bindy)
+    # 7) Using Properties, property(), to set setters and getter functions (https://www.programiz.com/python-programming/property)
+    bindy.name = "Cool Bindy"
+    bindy.dognames = []
+    # 8) Decorators and CLS (@classmethod)
+    def callotherfunction(newfunction):
+        print("Calling new function")
+        newfunction()
 
-@callotherfunction
-def newfunction():
-    print("Using new function")
+    @callotherfunction
+    def newfunction():
+        print("Using new function")
 
-@callotherfunction
-def function2():
-    print("Function 2")
+    @callotherfunction
+    def function2():
+        print("Function 2")
 
-bindy.dognames.append("Ghost Dog")
-print(bindy.dognames)
-Dog.printalldogs()
+    bindy.dognames.append("Ghost Dog")
+    print(bindy.dognames)
+    Dog.printalldogs()
 
-tracker.addnewspecies("Husky")
-print(Dog.specieslist)
-print(bindy.specieslist)
+    tracker.addnewspecies("Husky")
+    print(Dog.specieslist)
+    print(bindy.specieslist)

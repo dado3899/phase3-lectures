@@ -1,14 +1,34 @@
 # Here we have one DungeonMaster that can have many players how can we do that?
 class DungeonMaster:
-    pass
+    def __init__(self,name):
+        self.name = name
+        self.players = []
+    def partylist(self):
+        for player in self.players:
+            print(f'{player.name}: {player.dndclass}')
 
 class Player:
-    pass
+    def __init__(self,name,dndclass):
+        self.name = name
+        self.dndclass = dndclass
+        self.dm = None
 
 
 if __name__ == '__main__':
-    # Let us print all of the players under the dungeon master
-    # In this game we can also have the Dungeonmaster run something for all the players
-    # What if we have to remove a player from the game?
-    pass
+    # Create players
+    jonah = Player("Jonah","Rogue")
+    abby = Player("Abby","Thief")
+    gage = DungeonMaster("Gage")
+    # Attatch dm to each player
+    jonah.dm = gage
+    abby.dm = gage
+    # attatch players to dm
+    gage.players = [jonah,abby]
+    # Create a new player and add it to dillon
+    dillon = Player("Dillon","Princess Ruffian")
+    gage.players.append(dillon)
+    gage.partylist()
+    # Don't forget to set dillons dm to gage!
+    dillon.dm = gage
+    
 

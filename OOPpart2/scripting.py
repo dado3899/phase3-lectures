@@ -6,8 +6,11 @@
 import os
 import sys
 name = sys.argv[1]
-
+name2 = sys.argv[2]
+class Test:
+    pass
 if __name__ == "__main__":
-    print(f"The name is {name}")
-    #os.system('ls -l')
+    print(f"The name is {name2}")
+    
+    # os.system('mkdir newimage')
     
