@@ -17,10 +17,11 @@ CREATE TABLE <tablename2>(
     id INTEGER PRIMARY KEY,
     <attribute1> TEXT,
     <attribute2> INTEGER,
+    <tablename_id> INTEGER,
     FOREIGN KEY (tablename_id) REFERENCES tablename(id)
 );
 
-Lets show these tables, sqlite can see the schema using\
+Lets show these tables, sqlite can see the schema using
 .schema
 Or just show existing tables
 .tables
