@@ -1,0 +1,75 @@
+https://github.com/learn-co-students/SENG-LIVE-010923-Phase-3/tree/main/05_SQL/dog_walker
+
+Let us open up a new database using
+
+sqlite3 <databasename>.db
+
+Then let us create 2 tables using:
+See all datatypes here: https://www.tutorialspoint.com/sqlite/sqlite_data_types.htm
+
+CREATE TABLE <tablename>(
+    id INTEGER PRIMARY KEY,
+    <attribute1> TEXT,
+    <attribute2> INTEGER
+)
+
+CREATE TABLE <tablename2>(
+    id INTEGER PRIMARY KEY,
+    <attribute1> TEXT,
+    <attribute2> INTEGER,
+    FOREIGN KEY (tablename_id) REFERENCES tablename(id)
+)
+
+Lets show these tables, sqlite can see the schema using\
+.schema
+Or just show existing tables
+.tables
+
+What if we forgot an attribute to a table?
+ALTER TABLE <tablename>
+ADD COLUMN <newcolumn> TEXT;
+
+Or we can change an existing one!
+ALTER TABLE pets
+RENAME COLUMN birthdate TO age;
+
+What if we forgot a FOREIGN KEY? Well it is best to delete the
+old table and create a new one with a foreign key
+(NOTE if you have data that you want to keep follow this
+instruction to copy the data over
+https://database.guide/add-a-foreign-key-to-an-existing-table-in-sqlite/)
+
+So to drop a table we can do:
+DROP TABLE <tablename>;
+
+Now how do we populate the data?
+INSERT INTO <tablename>(<attributes>)
+VALUES (<corr>)
+
+If we want to update existing data theres a way to do so!
+UPDATE <tablename>
+SET <attribute> = <newinput>
+WHERE <attribute to filter by> = <how we are filtering>
+
+Now lets see all of a table!
+SELECT * FROM <tablename>
+
+We can use the where above as well!
+SELECT * FROM <tablename>
+WHERE <attribute to filter by> = <how we are filtering>;
+
+And to delete a value from the table
+DELETE FROM <tablename> 
+WHERE <attribute to filter by> = <how we are filtering>;
+
+This will create both a many to many relationship with just one
+foreign key!!
+(NOTE Inner Join = Join)
+SELECT <attributes>
+FROM <tablename2> ### This should be the table with the FOREIGN KEY
+JOIN <tablename> ### This should be the table that is referenced
+ON <tablename>.<attribute> = <tablename2>.attribute;
+
+Creating a join table
+
+When we ate done just type .exit
