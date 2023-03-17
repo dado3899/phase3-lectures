@@ -11,14 +11,14 @@ CREATE TABLE <tablename>(
     id INTEGER PRIMARY KEY,
     <attribute1> TEXT,
     <attribute2> INTEGER
-)
+);
 
 CREATE TABLE <tablename2>(
     id INTEGER PRIMARY KEY,
     <attribute1> TEXT,
     <attribute2> INTEGER,
     FOREIGN KEY (tablename_id) REFERENCES tablename(id)
-)
+);
 
 Lets show these tables, sqlite can see the schema using\
 .schema
@@ -70,6 +70,4 @@ FROM <tablename2> ### This should be the table with the FOREIGN KEY
 JOIN <tablename> ### This should be the table that is referenced
 ON <tablename>.<attribute> = <tablename2>.attribute;
 
-Creating a join table
-
-When we ate done just type .exit
+When we are done just type .exit
