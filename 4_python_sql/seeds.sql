@@ -1,0 +1,2 @@
+-- Use .read filename to run this file!
+-- We'll use this table to create a bunch of test data!

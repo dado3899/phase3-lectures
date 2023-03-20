@@ -1,3 +1,4 @@
 Learning Objectives:  
 
-Join tables in SQL
+ORM
+Class Mapping
