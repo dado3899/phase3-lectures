@@ -1,0 +1,4 @@
+Start off with
+pipenv install sqlalchemy
+pipenv shell
+Now we can import sqlalchemy!
