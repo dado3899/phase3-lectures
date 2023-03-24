@@ -30,5 +30,4 @@ print(bear2.actor.name)
 
 # SQL Basics
 
-
 # Run sql file
