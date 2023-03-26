@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session, declarative_base
 Base = declarative_base()
 
 #Creating a class that works with a table (child component of the base)
-class Meals(Base):
+class Meal(Base):
     __tablename__ = "Meals"
     #Properties
     id = Column(Integer(), primary_key=True)
@@ -15,7 +15,7 @@ class Meals(Base):
     temp = Column(Integer())
     calories = Column(Integer())
 
-class Ingredients(Base):
+class Ingredient(Base):
     __tablename__ = "Ingredients"
     id = Column(Integer(), primary_key=True)
     name = Column(String())
@@ -27,8 +27,16 @@ def create_tables():
     #Create the tables based on out parent base
     Base.metadata.create_all(engine)
 
+# Delete all our tables and remake them
+def remake_tables():
+    engine = create_engine('sqlite:///food.db')
+    Meal.__table__.drop(engine)
+    Base.metadata.create_all(engine)
+    pass
+
 # Add a object
 def add(meal):
+    print(meal)
     # Create the engine
     engine = create_engine('sqlite:///food.db')
     # Create a session from that engine (Allowing us to create tables)
@@ -65,24 +73,31 @@ def update():
     pass
 
 #With a delete we need to first query!
-def delete():
+def delete(temp_delete):
     engine = create_engine('sqlite:///food.db')
     with Session(engine) as session:
-        filtered_list = session.query(Meals).filter(Meals.name == "SP").delete()
+        session.query(Meal).filter(Meal.temp == temp_delete).delete()
         # session.delete(filtered_list)
         session.commit()
 
 if __name__ == '__main__':
-    # create_tables()
-    # newmeal= Meals(
-    #     name = "Spinach Puffs3",
-    #     temp = 90,
-    #     calories = 200
-    # )
-    # add(newmeal)
+    create_tables()
+    newmeal= Meal(
+        name = "Spinach Puffs",
+        temp = 90,
+        calories = 200
+    )
+    rice= Meal(
+        name = "Rice",
+        temp = 100,
+        calories = 300
+    )
+    add([rice,rice])
     # meal_list = select()
     # for meal in meal_list:
     #     print(meal.name)
     # filtered_list = filter_by()
-    delete()
+    # delete()
+    # remake_tables()
+    delete(90)
     pass
