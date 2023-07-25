@@ -1,4 +1,4 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 #The python shebang is used to make a file executable
 #To make the file executable run the command chmod +x /path/to/your/script.py
 #Lastly, run the file in your terminal as follows: /path/to/your/script.py
