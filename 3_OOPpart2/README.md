@@ -1,6 +1,5 @@
 Learning Objectives:  
-
-Scripting 
+ 
 Object Inheritance    
 Super  
 Class methods with inheritance  
