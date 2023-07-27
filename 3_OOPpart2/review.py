@@ -13,7 +13,7 @@ class Car:
 
     def go(self):
         print(f"{self.model} go VROOOOOOOM")
-
+    
     def get_color(self):
         return self._color
     
@@ -71,3 +71,5 @@ print(x == y)
 # . vs [] for classes
 honda_civic.color
 x["a"]
+
+print(sorted(Car.all_cars, key=Car.get_color))

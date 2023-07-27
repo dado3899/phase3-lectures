@@ -1,4 +1,4 @@
-# Join tables in Pytho
+# Join tables in Python
 
 # SQL Basics
 

@@ -21,6 +21,11 @@ CREATE TABLE <tablename2>(
     FOREIGN KEY (tablename_id) REFERENCES tablename(id)
 );
 
+CREATE TABLE test(
+    id INTEGER PRIMARY KEY,
+    test TEXT
+);
+
 Lets show these tables, sqlite can see the schema using
 .schema
 Or just show existing tables
@@ -45,7 +50,7 @@ DROP TABLE <tablename>;
 
 Now how do we populate the data?
 INSERT INTO <tablename>(<attributes>)
-VALUES (<corr>)
+VALUES (<corr>);
 
 If we want to update existing data theres a way to do so!
 UPDATE <tablename>
@@ -72,3 +77,8 @@ JOIN <tablename> ### This should be the table that is referenced
 ON <tablename>.<attribute> = <tablename2>.attribute;
 
 When we are done just type .exit
+
+SELECT students.first_name, schedules.classname, teachers.name
+FROM schedules
+JOIN students, teachers
+ON schedules.student_id = students.id AND schedules.teacher_id = teacher.id;
