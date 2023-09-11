@@ -73,5 +73,6 @@ if __name__ == '__main__':
             print("DELETING")
             session.delete(student)
             session.commit()
+        session.add(jensen)
         
     pass
