@@ -1,20 +1,38 @@
-# Lets take what we've done in one to many and allow it to be reversed!
-class Bar:
-    # Initialize the bar class that has Cocktails
-    def __init__(self):
-        pass
+class Seminar:
+    def __init__(self,topic,teacher,location):
+        self.topic=topic
+        self.teacher = teacher
+        self.location = location
+        self.students = []
+    
+    def addStudent(self,student):
+        if type(student) is Student:
+            self.students.append(student)
+            student.seminars.append(self)
 
-class Cocktail:
-    def __init__(self,name,spirit):
-        pass
+class Student:
+    def __init__(self,name,grade):
+        self.name = name
+        self.grade = grade
+        self.seminars = []
+    
+    def __repr__(self):
+        return self.name
 
 if __name__ == '__main__':
-    # First let us define a few bars and drinks
+    ai101 = Seminar("AI","Sam","Sam Office")
+    css202 = Seminar("CSS", "Jerrick","Back Alley")
+    python101 = Seminar("Python","David","Blue Room")
 
-    # Now we attatch the drinks to the bars and vice versa
-    # Now lets print out all of the bars that contain a certain drink
-    # Also lets print all of the drinks in a bar
-    pass
+    cristol = Student("Cristol", "Phase 3")
+    ryan = Student("Ryan", "Phase 3")
+    kam = Student("Kam", "Phase 3")
+    ai101.addStudent(cristol)
+    ai101.addStudent(ryan)
+    css202.addStudent(ryan)
+    css202.addStudent(kam)
+    python101.addStudent(kam)
+    python101.addStudent(cristol)
 
-# To prepare for the future as we are thinking about sql how can we do many to many? one to many?
-# We would need to think in ids!
+    print(ai101.students)
+    print(css202.students)

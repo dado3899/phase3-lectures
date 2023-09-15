@@ -1,34 +1,34 @@
-# Here we have one DungeonMaster that can have many players how can we do that?
-class DungeonMaster:
-    def __init__(self,name):
+class Library:
+    def __init__(self,name,location):
         self.name = name
-        self.players = []
-    def partylist(self):
-        for player in self.players:
-            print(f'{player.name}: {player.dndclass}')
+        self.location = location
+        self.books = []
 
-class Player:
-    def __init__(self,name,dndclass):
-        self.name = name
-        self.dndclass = dndclass
-        self.dm = None
+    def addBooks(self,books):
+        for book in books:
+            if type(book) is Book:
+                self.books.append(book)
+                book.library = self
+            else:
+                print(f"{book} is not a book")
+
+class Book:
+    def __init__(self,title,author,genre):
+        self.title = title
+        self.author = author
+        self.genre = genre
+        self.library = None
+    
+    def __repr__(self):
+        return f'{self.title} by {self.author}'
 
 
 if __name__ == '__main__':
-    # Create players
-    jonah = Player("Jonah","Rogue")
-    abby = Player("Abby","Thief")
-    gage = DungeonMaster("Gage")
-    # Attatch dm to each player
-    jonah.dm = gage
-    abby.dm = gage
-    # attatch players to dm
-    gage.players = [jonah,abby]
-    # Create a new player and add it to dillon
-    dillon = Player("Dillon","Princess Ruffian")
-    gage.players.append(dillon)
-    gage.partylist()
-    # Don't forget to set dillons dm to gage!
-    dillon.dm = gage
-    
-
+    dpl = Library("Denver Public Library", "Denver")
+    lotr = Book("Lord of The Rings", "JRR Tolkein", "Fantasy")
+    hp = Book("Harry Potter", "Rowling","Fantasy")
+    house_of_leaves = Book("House Of Leaves", "Mark Danielewski","Horror")
+    dictionary = Book("Websters Dictionary", "Webster", "Non Fiction")
+    dpl.addBooks([lotr,hp,house_of_leaves,dictionary])
+    print(dpl.books)
+    print(lotr.library)
