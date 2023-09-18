@@ -1,25 +1,48 @@
 -- Use .read filename to run this file!
 -- We'll use this table to create a bunch of test data!
-DROP TABLE test;
-DROP TABLE test2;
+DROP TABLE students;
+DROP TABLE classes;
+DROP TABLE joinclasses;
 
-CREATE TABLE IF NOT EXISTS test(
+CREATE TABLE IF NOT EXISTS students(
     id INTEGER PRIMARY KEY,
-    name TEXT
+    name TEXT,
+    grade INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS test2(
+CREATE TABLE IF NOT EXISTS classes(
     id INTEGER PRIMARY KEY,
-    test_id INTEGER,
-    FOREIGN KEY (test_id) REFERENCES test(id)
+    topic TEXT
 );
 
-INSERT INTO test(name)
-VALUES ("TEST");
+CREATE TABLE IF NOT EXISTS joinclasses(
+    id INTEGER PRIMARY KEY,
+    class_id INTEGER,
+    student_id INTEGER,
+    FOREIGN KEY (class_id) REFERENCES classes(id),
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
 
-INSERT INTO test2(test_id)
-VALUES (1);
+INSERT INTO students(name,grade)
+VALUES("Kam",6);
 
+INSERT INTO students(name,grade)
+VALUES("Sky",5);
 
+INSERT INTO students(name,grade)
+VALUES("Baran",5);
 
+INSERT INTO classes(topic)
+VALUES("CSS");
+INSERT INTO classes(topic)
+VALUES("Python");
+
+INSERT INTO joinclasses(class_id,student_id)
+VALUES (1,1);
+INSERT INTO joinclasses(class_id,student_id)
+VALUES (1,2);
+INSERT INTO joinclasses(class_id,student_id)
+VALUES (1,3);
+INSERT INTO joinclasses(class_id,student_id)
+VALUES (2,2);
 
