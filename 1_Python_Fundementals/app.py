@@ -3,6 +3,8 @@
 #To make the file executable run the command chmod +x /path/to/your/script.py
 #Lastly, run the file in your terminal as follows: /path/to/your/script.py
 #Todo 1: print a simple string and run the file in your terminal using the command python3 <filename> or the executable option
+x = "hello world"
+print(x)
 
 #Python Package Index
 #To install packages use 'pipenv install package_name'
@@ -44,8 +46,18 @@ def addition(a,b):
     # ipdb.set_trace()
     return result
 
-a = 60
-b = "hello"
+# x  = '0'
+# y = 5
+# num = multiply(x,y)
+# print(num)
+
+# def addition(a,b):
+#     result = a + b
+#     ipdb.set_trace()
+#     return result
+
+# a = 60
+# b = "hello"
 
 # print(addition(a,b))
 
@@ -145,6 +157,12 @@ if "d" in dictionary:
     # print("in dict!")
     pass
 #if/elif/else syntax
+if x is 1:
+    pass
+elif 1 in new_list:
+    print("new_list has 1")
+elif "d" not in new_dict:
+    print("not in new_dict")
 #if condition:
 #elif:
 #elif:
@@ -174,10 +192,16 @@ if "f" not in dictionary:
 #Conditionals and Control Flow
 
 #Test if a number is positive
-
+num = 1
+if num >0:
+    print("pos")
 #Test if a string is empty
+string = ""
+if not string:
+    print("string is empty")
 
 #Test if a number is positive or negative using an else
+
 
 #Test if a number is positve, negative, or zero, using if, elif, and else
 
@@ -204,8 +228,14 @@ if [] == []:
 
 #Todo 8: Create a condition to check a pet's mood using an if/elif/else and a ternary
 pet_name = "tracker"
-pet_mood = "Hungry"
+pet_mood = "bnfaiob"
 #If "pet_mood" is "Hungry!", "Tracker needs to be fed."
+if pet_mood == "Hungry":
+    print("Please feed")
+elif pet_mood is "Sad":
+    print("Give pets")
+else:
+    print("All good")
 #If "pet_mood" is "Whinny ", "Tracker needs a walk"
 #In all other cases, "Tracker is all good"
 
@@ -237,7 +267,14 @@ print(f"Hi there this is interpolated {interpolate_this} before this")
 #Todo 9: Move conditional logic from Deliverable 1 into a function (pet_status) so that we may 
 # use it with different pets / moods
 # Test invocation of "pet_status" in ipdb using "pet_status(pet_name, pet_mood)"
+def pet_status(pet_name,pet_mood):
+    ipdb.set_trace()
+    print(f"Your pet {pet_name} is {pet_mood}")
+    pet_mood = "Happy"
+    ipdb.set_trace()
+    print(f"{pet_name} is now {pet_mood}")
 
+pet_status(pet_name,pet_mood)
 #Todo 10: Create a function (pet_birthday) that will increment a pet's age up by 1. Use try / except to handle errors. 
 # If our function is given an incorrect datatype, it should handle the TypeError exception and alert the user
 # pet_birthday(10) => "Happy Birthday! Your pet is now 11."
@@ -252,4 +289,3 @@ print(f"Hi there this is interpolated {interpolate_this} before this")
 # pet_birthday(10) => "Happy Birthday! Your pet is now 11."
 # pet_birthday("oops") => "Type Error Occurred"
 
-#Todo 13: Creating test in python
