@@ -41,6 +41,7 @@ with Session(engine) as session:
     # session.add_all([pc,p1,p2,p3])
     # session.commit()
     pc = session.query(PencilCase).first()
+    print(pc.pencils[0].pencil_case)
     # pc.pencils[0].color = "Turquois"
     # session.add(pc.pencils[0])
     # session.commit()

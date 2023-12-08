@@ -1,17 +1,2 @@
--- INSERT INTO student(name)
--- VALUES("Kam");
-
--- INSERT INTO student(name)
--- VALUES("Sky");
-
--- INSERT INTO student(name)
--- VALUES("Baran");
-
--- ALTER TABLE student
--- ADD COLUMN grade;
-
--- UPDATE student
--- set grade = 6
--- WHERE name="Kam";
-
--- DROP TABLE classes;
+SQLite version 3.37.0 2021-12-09 01:34:53
+Enter ".help" for usage hints.

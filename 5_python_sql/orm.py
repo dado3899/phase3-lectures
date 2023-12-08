@@ -1,5 +1,7 @@
 # We start by importing sqlite3
 import sqlite3
+import os
+os.system("sqlite3 juantest.db < seeds.sql")
 # We then connect to the database with sqlite3.connect('')
 connection = sqlite3.connect("test_db.db")
 cursor = connection.cursor()
@@ -13,12 +15,13 @@ JOIN classes,students
 ON joinclasses.student_id = students.id AND joinclasses.class_id=classes.id;
 '''
 # seed_command = '.read seeds.sql'
-var = input("Class to delete ")
+# var = input("Class to delete ")
 sql_command_delete = f'''
 DELETE FROM classes
-WHERE id = {var}
+WHERE id = {"var"}
 '''
-cursor.execute(sql_command_delete)
+# command = ".read seeds.sql"
+# cursor.execute(command)
 # stud_classes = data.fetchall()
 # for pair in stud_classes:
 #     # print(pair)

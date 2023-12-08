@@ -24,18 +24,18 @@ CREATE TABLE IF NOT EXISTS joinclasses(
 );
 
 INSERT INTO students(name,grade)
-VALUES("Kam",6);
+VALUES("Juan",6);
 
 INSERT INTO students(name,grade)
-VALUES("Sky",5);
+VALUES("Juan",5);
 
 INSERT INTO students(name,grade)
-VALUES("Baran",5);
+VALUES("Juan",5);
 
 INSERT INTO classes(topic)
-VALUES("CSS");
+VALUES("Juan");
 INSERT INTO classes(topic)
-VALUES("Python");
+VALUES("Juan");
 
 INSERT INTO joinclasses(class_id,student_id)
 VALUES (1,1);
