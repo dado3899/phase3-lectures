@@ -15,7 +15,6 @@ class Cocktails:
                 count+=1
         return sum/count
 
-
 class Bar:
     def __init__(self,name,location):
         self.name = name
