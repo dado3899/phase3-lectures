@@ -1,0 +1,8 @@
+STUDENTS TABLE WITH NAME, age
+TEACHERS TABLE WITH NAME, EMAIL
+CLASS TABLE that connects students 
+and teachers as well as has the 
+subject
+
+ADD 2 teachers, 3 students, 
+and each student joins 1 class

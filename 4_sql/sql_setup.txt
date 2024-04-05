@@ -20,6 +20,12 @@ CREATE TABLE <tablename2>(
     <tablename_id> INTEGER,
     FOREIGN KEY (tablename_id) REFERENCES tablename(id)
 );
+CREATE TABLE mammels(
+    id INTEGER PRIMARY KEY,
+    species TEXT,
+    zoo_id INTEGER,
+    FOREIGN KEY (zoo_id) REFERENCES zoos(id)
+);
 
 classname, period, room_number, time, student_id, teacher_id
 CREATE TABLE schedule(
@@ -61,6 +67,11 @@ Now how do we populate the data?
 INSERT INTO <tablename>(<attributes>)
 VALUES (<corr>)
 
+INSERT INTO zoos(legal_name)
+VALUES("DENVER ZOO");
+INSERT INTO zoos(legal_name)
+VALUES("SAN DIEGO ZOO");
+
 If we want to update existing data theres a way to do so!
 UPDATE <tablename>
 SET <attribute> = <newinput>
@@ -91,3 +102,9 @@ SELECT student.name, schedule.classname, schedule.time
    FROM schedule
    JOIN student
    ON schedule.student_id = student.id;
+
+SELECT teachers.name, classes.subject,students.name
+FROM classes
+JOIN students,teachers
+ON students.id = classes.student_id AND teachers.id = classes.teacher_id
+WHERE classes.subject = "PYTHON" AND teachers.name = "David";
