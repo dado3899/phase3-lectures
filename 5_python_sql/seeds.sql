@@ -3,23 +3,28 @@
 -- DROP TABLE test;
 -- DROP TABLE test2;
 
--- CREATE TABLE IF NOT EXISTS test(
---     id INTEGER PRIMARY KEY,
---     name TEXT
--- );
+CREATE TABLE IF NOT EXISTS students(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    email TEXT
+);
 
--- CREATE TABLE IF NOT EXISTS test2(
---     id INTEGER PRIMARY KEY,
---     test_id INTEGER,
---     FOREIGN KEY (test_id) REFERENCES test(id)
--- );
+CREATE TABLE IF NOT EXISTS teachers(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    email TEXT
+);
 
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 1",3,1);
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 2",3,2);
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 3",3,3);
+CREATE TABLE IF NOT EXISTS classes(
+    id INTEGER PRIMARY KEY,
+    topic TEXT,
+    grade FLOAT,
+    student_id INTEGER,
+    teacher_id INTEGER,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
+
 
 
 

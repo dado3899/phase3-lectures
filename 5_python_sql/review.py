@@ -1,4 +1,4 @@
-# Join tables in Pytho
+# Join tables in Python
 class Student:
     all = []
     def __init__(self,id):
