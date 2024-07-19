@@ -21,17 +21,11 @@ CREATE TABLE <tablename2>(
     FOREIGN KEY (tablename_id) REFERENCES tablename(id)
 );
 
-classname, period, room_number, time, student_id, teacher_id
-CREATE TABLE schedule(
+CREATE TABLE students(
     id INTEGER PRIMARY KEY,
-    classname TEXT,
-    period INTEGER,
-    room_number INTEGER,
-    time TEXT,
-    student_id INTEGER,
-    teacher_id INTEGER,
-    FOREIGN KEY (student_id) REFERENCES student(id),
-    FOREIGN KEY (teacher_id) REFERENCES teacher(id)
+    name TEXT,
+    email INTEGER,
+    grade_level INTEGER
 );
 
 
