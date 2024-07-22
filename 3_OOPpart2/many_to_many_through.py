@@ -1,4 +1,5 @@
 class Landscaper:
+    all = []
     def __init__(self,name,company,location):
         self.name = name
         self.company = company

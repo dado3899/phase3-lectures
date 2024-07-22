@@ -81,7 +81,8 @@ ON <tablename>.<attribute> = <tablename2>.attribute;
 
 When we are done just type .exit
 
-SELECT student.name, schedule.classname, schedule.time
-   FROM schedule
-   JOIN student
-   ON schedule.student_id = student.id;
+SELECT teachers.id, teachers.name, teachers.email, teachers.specialty
+FROM schedules
+JOIN students, teachers
+ON schedules.student_id = students.id, teachers.id = schedules.teacher_id
+WHERE students.id = 1;

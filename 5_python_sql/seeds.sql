@@ -1,25 +1,48 @@
 -- Use .read filename to run this file!
 -- We'll use this table to create a bunch of test data!
--- DROP TABLE test;
--- DROP TABLE test2;
+DROP TABLE students;
+DROP TABLE teachers;
+DROP TABLE schedules;
 
--- CREATE TABLE IF NOT EXISTS test(
---     id INTEGER PRIMARY KEY,
---     name TEXT
--- );
+CREATE TABLE IF NOT EXISTS students(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    emergency_phone INTEGER
+);
 
--- CREATE TABLE IF NOT EXISTS test2(
---     id INTEGER PRIMARY KEY,
---     test_id INTEGER,
---     FOREIGN KEY (test_id) REFERENCES test(id)
--- );
+CREATE TABLE IF NOT EXISTS teachers(
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    email INTEGER,
+    specialty TEXT
+);
 
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 1",3,1);
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 2",3,2);
-INSERT INTO schedule(classname,student_id,teacher_id)
-VALUES ("Class 3",3,3);
+CREATE TABLE IF NOT EXISTS schedules(
+    id INTEGER PRIMARY KEY,
+    classname TEXT,
+    period INTEGER,
+    student_id INTEGER,
+    teacher_id INTEGER,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (teacher_id) REFERENCES teachers(id)
+);
 
+INSERT INTO students(name, emergency_phone)
+VALUES("Justin", 2222222222);
+INSERT INTO students(name, emergency_phone)
+VALUES("Grey", 1111111111);
+INSERT INTO students(name, emergency_phone)
+VALUES("Ben", 1000000000);
 
+INSERT INTO teachers(name,email,specialty)
+VALUES("David","d@gmail.com", "Python");
 
+INSERT INTO teachers(name,email,specialty)
+VALUES("Stephen","S@gmail.com", "JS");
+
+INSERT INTO schedules(classname,period,student_id,teacher_id)
+VALUES ("Python 101",1,1,1);
+INSERT INTO schedules(classname,period,student_id,teacher_id)
+VALUES ("Flask 101",2,1,1);
+INSERT INTO schedules(classname,period,student_id,teacher_id)
+VALUES ("Big O",3,1,2);
