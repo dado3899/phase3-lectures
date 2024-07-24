@@ -12,6 +12,81 @@ class Teacher:
         self.email = email
         self.specialty = specialty
 
+    @classmethod
+    def get_data(cls):
+        res = cursor.execute('''
+        SELECT * FROM teachers
+        ''')
+        data = res.fetchall()
+        all_teachers = []
+        for teach_tuple in data:
+            all_teachers.append(
+                Teacher(
+                    id = teach_tuple[0],
+                    name = teach_tuple[1],
+                    email=teach_tuple[2],
+                    specialty=teach_tuple[3]
+                )
+            )
+        return all_teachers
+    
+    @classmethod
+    def get_one(cls,id):
+        res = cursor.execute(f'''
+        SELECT * FROM teachers
+        WHERE id = {id}
+        ''')
+        data = res.fetchone()
+        # print(data)
+        if data:
+            return Teacher(
+                id = data[0],
+                name = data[1],
+                email=data[2],
+                specialty=data[3]
+            )
+    
+    def post_to_database(self):
+        cursor.execute('''
+        INSERT INTO teachers(name,email,specialty)
+        VALUES(?,?,?)
+        ''', (self.name,self.email,self.specialty))
+        connection.commit()
+
+    def patch_name(self,name):
+        cursor.execute('''
+        UPDATE teachers
+        SET name = ?
+        WHERE id = ?
+        ''',(name,self.id))
+        connection.commit()
+        self.name = name
+
+    def delete(self):
+        cursor.execute(f'''
+        DELETE FROM teachers
+        WHERE id = {self.id}
+        ''')
+        connection.commit()
+
+    def students(self):
+        # Select all schedules
+        res_sched = cursor.execute('SELECT * FROM schedules')
+        # loop schedule to find student id
+        my_students = []
+        my_student_ids = []
+        for sched in res_sched.fetchall():
+            if sched[5] == self.id:
+                student = Student.get_one(sched[4])
+                if student.id not in my_student_ids:
+                    my_students.append(student)
+                    my_student_ids.append(student.id)
+        return my_students
+                
+
+        
+
+
     def __repr__(self):
         return f"{self.name}: {self.email}"
 
@@ -62,6 +137,7 @@ class Student:
         return st
 
     # PATCH
+    # Beforehand student.name = "newname"
     def patch(self):
         cursor.execute('''
         UPDATE students
@@ -74,6 +150,10 @@ class Student:
         cursor.execute(f'''
         DELETE FROM students
         WHERE id = {self.id}
+        ''')
+        cursor.execute(f'''
+        DELETE FROM schedules
+        WHERE student_id = {self.id}
         ''')
         connection.commit()
 
@@ -101,21 +181,31 @@ class Student:
                 )
         return teachers
 
+class Schedule:
+    def __init__(self,classname,period,grade,student_id,teacher_id,id=None):
+        self.id = id
+        self.classname = classname
+        self.period = period
+        self.grade = grade
+        self.student_id = student_id
+        self.teacher_id = teacher_id
+    
+    def save_to_database(self):
+        res = cursor.execute('''
+        INSERT INTO schedules(classname,period,grade,student_id,teacher_id)
+        VALUES(?,?,?,?,?);
+        ''', (self.classname,self.period,self.grade,self.student_id,self.teacher_id))
+        connection.commit()
 
-st = Student("Bill", 3333333333)
-# st.save_student()
-# print(st.id)
 
-print(Student.all())
-
-i1 = input("Hey, whats your student id?")
-user= Student.get_one(i1)
-print(f"Hello {user.name}")
-i2 = input("Change name to: ")
-user.name = i2
-user.patch()
-i3 = input("Delete?")
-if i3 == "yes":
-    user.delete()
-print("Seeing all teachers")
-print(user.my_teachers())
+# my_teach= Teacher.get_one(3)
+# print(my_teach)
+# my_teach.delete()
+# student.name = newname
+# student.patch
+# t1 = Teacher(
+#     name="Yessenia",
+#     email="y@gmail.com",
+#     specialty="CSS"
+# )
+# t1.post_to_database()

@@ -21,6 +21,7 @@ CREATE TABLE IF NOT EXISTS schedules(
     id INTEGER PRIMARY KEY,
     classname TEXT,
     period INTEGER,
+    grade FLOAT,
     student_id INTEGER,
     teacher_id INTEGER,
     FOREIGN KEY (student_id) REFERENCES students(id),
@@ -40,9 +41,10 @@ VALUES("David","d@gmail.com", "Python");
 INSERT INTO teachers(name,email,specialty)
 VALUES("Stephen","S@gmail.com", "JS");
 
-INSERT INTO schedules(classname,period,student_id,teacher_id)
-VALUES ("Python 101",1,1,1);
-INSERT INTO schedules(classname,period,student_id,teacher_id)
-VALUES ("Flask 101",2,1,1);
-INSERT INTO schedules(classname,period,student_id,teacher_id)
-VALUES ("Big O",3,1,2);
+INSERT INTO schedules(classname,period,student_id,teacher_id,grade)
+VALUES ("Python 101",1,1,1,2.7);
+INSERT INTO schedules(classname,period,student_id,teacher_id,grade)
+VALUES ("Flask 101",2,1,1,4.0);
+INSERT INTO schedules(classname,period,student_id,teacher_id,grade)
+VALUES ("Big O",3,1,2,1.5);
+
