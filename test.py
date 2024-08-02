@@ -1,6 +1,10 @@
 arr = [0,1,2,3,5,2,4,0,1,2,3,5,2,4,0,1,2,3,5,2,4,0,1,2,3,5,2,4,0,1,2,3,5,2,4,20]
 arrsorted = [0,1,2,3,5,6,7,8,9,10,11,12,13,14]
 target = 27
+def findtarget(n,x):
+    for i in n:
+        pass
+findtarget(arrsorted,target)
 
 for i in arrsorted:
     # cutting in half logic
@@ -25,4 +29,9 @@ def findNum(find):
         return True
         
 
-O(n)
+print(
+[["O","X","O","O"],
+["O","X","O","O"],
+["O","X","O","O"],
+["O","X","O","O"]]
+)

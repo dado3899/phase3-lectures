@@ -84,5 +84,5 @@ When we are done just type .exit
 SELECT teachers.id, teachers.name, teachers.email, teachers.specialty
 FROM schedules
 JOIN students, teachers
-ON schedules.student_id = students.id, teachers.id = schedules.teacher_id
+ON schedules.student_id = students.id AND teachers.id = schedules.teacher_id
 WHERE students.id = 1;
